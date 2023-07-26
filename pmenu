@@ -103,7 +103,7 @@ if __name__ == "__main__":
               f"will be written to {YELLOW}\"/tmp/pmenu\"{RESET}.\n"
               f"  {CYAN}q      {RESET}Quit menu and exit with code 1.\n")
 
-        sys.exit(1)
+        sys.exit(2)
 
     text = [line
             for line in text
@@ -114,4 +114,4 @@ if __name__ == "__main__":
         with open(TMP_FILE, "w", encoding="utf-8") as f:
             f.write(selected_option)
         sys.exit(0)
-    sys.exit(2)
+    sys.exit(1)
