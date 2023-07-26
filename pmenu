@@ -26,7 +26,7 @@ def display_menu(stdscr, lines):
         lines: The lines to display in the menu.
 
     Returns:
-        The selected option or None if the user quit the menu.
+        The selected option or None if the user quits the menu.
     """
     current_row = 0
     curses.curs_set(0)
@@ -77,7 +77,7 @@ def pmenu(lines):
         lines: The lines to display in the menu.
 
     Returns:
-        The selected option or None if the user quit the menu.
+        The selected option or None if the user quits the menu.
     """
     return curses.wrapper(display_menu, lines)
 
