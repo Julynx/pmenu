@@ -16,7 +16,7 @@ if [ $sourced -eq 0 ]; then
     echo -e "  ${CYAN}up${RESET}               Highlight previous directory."
     echo -e "  ${CYAN}down${RESET}             Highlight next directory."
     echo -e "  ${CYAN}enter${RESET}            Change to highlighted directory."
-    echo -e "  ${CYAN}q${RESET}                Drop out of the menu."
+    echo -e "  ${CYAN}esc${RESET}                Drop out of the menu."
     echo
     exit 1
 fi
