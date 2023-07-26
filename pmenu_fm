@@ -1,0 +1,83 @@
+#!/bin/bash
+
+CYAN="\033[0;36m"
+RESET="\033[0m"
+RED="\033[0;31m"
+
+# If the script has not been sourced, print usage and exit
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+if [ $sourced -eq 0 ]; then
+    echo
+    echo "Usage:"
+    echo -e "  ${CYAN}. pmenu_fm${RESET}       Notice the dot at the beginning."
+    echo -e "  ${CYAN}source pmenu_fm${RESET}  Equivalent to the above."
+    echo
+    echo "Bindings:"
+    echo -e "  ${CYAN}up${RESET}               Highlight previous directory."
+    echo -e "  ${CYAN}down${RESET}             Highlight next directory."
+    echo -e "  ${CYAN}enter${RESET}            Change to highlighted directory."
+    echo -e "  ${CYAN}q${RESET}                Drop out of the menu."
+    echo
+    exit 1
+fi
+
+# Ensure that the required programs are installed
+which lsd >/dev/null
+if [ $? -ne 0 ]; then
+    echo
+    echo -e "${RED}pmenu_fm requires 'lsd', but it's not installed.${RESET}"
+    echo -e "${CYAN}https://github.com/lsd-rs/lsd${RESET}"
+    echo
+    return
+fi
+
+which pmenu >/dev/null
+if [ $? -ne 0 ]; then
+    echo
+    echo -e "${RED}pmenu_fm requires 'pmenu', but it's not installed.${RESET}"
+    echo -e "${CYAN}https://github.com/Julynx/pmenu${RESET}"
+    echo
+    return
+fi
+
+# Main loop
+while :; do
+    lsd_text="$(lsd -1 --icon=always --no-symlink --group-dirs=first)"
+    lsd_dot_text="$(lsd -1 -A --icon=always --no-symlink --group-dirs=first -I=[^.]*)"
+
+    pmenu "..
+$lsd_text
+$lsd_dot_text"
+
+    # Return if the user pressed the exit key
+    RETURN_VALUE=$?
+    if [ $RETURN_VALUE -eq 1 ]; then
+        clear
+        return
+    fi
+
+    # Remove the icon from the name of the selected directory
+    text="$(cat /tmp/pmenu)"
+    if [[ ! $text == ..* ]]; then
+        text="${text:2}"
+    fi
+
+    # Try to change to the selected directory
+    cd "$text"
+    RETURN_VALUE=$?
+    if [ $RETURN_VALUE -eq 0 ]; then
+        clear
+        continue
+    fi
+
+    # If cd fails, try to open with xdg-open
+    xdg-open "$text" >/dev/null 2>&1
+    RETURN_VALUE=$?
+    if [ $RETURN_VALUE -ne 0 ]; then
+        clear
+        echo -e -n "${RED}xdg-open could not open '$text'.${RESET}"
+        sleep 1.5s
+    fi
+
+    clear
+done
