@@ -42,19 +42,16 @@ Bindings:
 
 ## pmenu_fm: A practical use case
 The [pmenu_fm](https://raw.githubusercontent.com/Julynx/pmenu/main/pmenu_fm) script included in this repository is an example of how [pmenu](https://github.com/Julynx/pmenu) can be 
-integrated into a bash script to implement a simple file selector.
+integrated into a bash script to implement a simple file selector. 
 
 It uses [lsd](https://github.com/lsd-rs/lsd), a modern [ls](https://es.wikipedia.org/wiki/Ls) replacement, to get the list of files in the current directory and their associated icons.
-The list is then passed to [pmenu](https://github.com/Julynx/pmenu), which displays a menu in the terminal window,
-
-<p align="center">  
-  <img width="600" src="https://i.imgur.com/ogT4P19.png">
-</p>
+The list is then passed to [pmenu](https://github.com/Julynx/pmenu), which displays a menu in the terminal window.
 
 You can highlight a directory with the ```Up``` and ```Down``` keys, and change to the selected directory or [xdg-open](https://linux.die.net/man/1/xdg-open) the selected file with the ```Enter``` key. The menu can be closed with the ```Q``` key.
+
 <br>
 
-## Integration with Python
+## Python integration
 To use [pmenu](https://github.com/Julynx/pmenu) from your Python scripts, install the ```pmenu-lib``` package from [PyPi](https://pypi.org/):
 ```
 pip install pmenu-lib
