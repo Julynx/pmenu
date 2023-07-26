@@ -49,8 +49,6 @@ The list is then passed to [pmenu](https://github.com/Julynx/pmenu), which displ
 
 You can highlight a directory with the ```Up``` and ```Down``` keys, and change to the selected directory or [xdg-open](https://linux.die.net/man/1/xdg-open) the selected file with the ```Enter``` key. The menu can be closed with the ```Q``` key.
 
-> You must have [lsd](https://github.com/lsd-rs/lsd) and [pmenu](https://github.com/Julynx/pmenu) installed to your system path for [pmenu_fm](https://raw.githubusercontent.com/Julynx/pmenu/main/pmenu_fm) to work properly.
-
 <br>
 
 ## Python integration
