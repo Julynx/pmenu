@@ -62,44 +62,24 @@ from pmenu_lib import pmenu
 
 selected_option = pmenu(["Option1", "Option2", "Option3"])
 ```
+```
+> Option1
+Option2
+Option3
 
-$${\color{white}+------------------------+}$$
-
-$${\color{white} }$$
-
-$${\color{blue}Option1}$$
-
-$${\color{white}Option2}$$
-
-$${\color{white}Option3}$$
-
-$${\color{white} }$$
-
-$${\color{white}+------------------------+}$$
-
-$${\color{white}(Enter)}$$
-
+(Enter)
+```
 ```python
 print(selected_option)
 >> "Option1"
 ```
+```
+> Option1
+Option2
+Option3
 
-$${\color{white}+------------------------+}$$
-
-$${\color{white} }$$
-
-$${\color{blue}Option1}$$
-
-$${\color{white}Option2}$$
-
-$${\color{white}Option3}$$
-
-$${\color{white} }$$
-
-$${\color{white}+------------------------+}$$
-
-$${\color{white}(Q)}$$
-
+(Q)
+```
 ```python
 print(selected_option)
 >> None
