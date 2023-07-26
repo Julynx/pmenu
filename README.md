@@ -52,7 +52,7 @@ You can highlight a directory with the ```Up``` and ```Down``` keys, and change 
 <br>
 
 ## Python integration
-To use [pmenu](https://github.com/Julynx/pmenu) from your Python scripts, install the ```pmenu-lib``` package from [PyPi](https://pypi.org/):
+To use [pmenu](https://github.com/Julynx/pmenu) from your Python scripts, install the ```pmenu-lib``` package from [PyPi]([https://pypi.org/](https://pypi.org/project/pmenu-lib/)):
 ```
 pip install pmenu-lib
 ```
