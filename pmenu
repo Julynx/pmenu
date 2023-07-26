@@ -79,7 +79,10 @@ def pmenu(lines):
     Returns:
         The selected option or None if the user quits the menu.
     """
-    return curses.wrapper(display_menu, lines)
+    try:
+        return curses.wrapper(display_menu, lines)
+    except KeyboardInterrupt:
+        return None
 
 
 if __name__ == "__main__":
