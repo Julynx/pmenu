@@ -165,7 +165,7 @@ def _populate_screen(*, screen, lines, row, query):
         tuple: The start row and the max display rows.
     """
     max_rows, _ = screen.getmaxyx()
-    max_display_rows = min(max_rows - 2, len(lines))
+    max_display_rows = min(max_rows - 1, len(lines))
 
     start_row = max(0, row - max_display_rows + 1)
     end_row = min(start_row + max_display_rows, len(lines))
