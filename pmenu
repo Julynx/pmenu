@@ -3,7 +3,7 @@
 """
 @file     pmenu
 @brief    Sleek dmenu alternative written in Python and powered by curses.
-@date     26/07/2023
+@date     02/08/2023
 @author   Julio Cabria
 """
 
