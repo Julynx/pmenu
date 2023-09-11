@@ -51,11 +51,3 @@ It uses [lsd](https://github.com/lsd-rs/lsd), a modern [ls](https://es.wikipedia
 The list is then passed to [pmenu](https://github.com/Julynx/pmenu), which displays a menu in the terminal window.
 
 You can highlight a directory with the ```Up``` and ```Down``` keys, and change to the selected directory or [xdg-open](https://linux.die.net/man/1/xdg-open) the selected file with the ```Enter``` key. The menu can be closed with the ```Esc``` key.
-
-<br>
-
-## Python integration
-To use [pmenu](https://github.com/Julynx/pmenu) from your Python scripts, install the ```pmenu-lib``` package from [PyPi](https://pypi.org/project/pmenu-lib/):
-```
-pip install pmenu-lib
-```
