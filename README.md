@@ -2,15 +2,18 @@
 *Sleek dmenu alternative written in Python and powered by curses.*
 
 <br>
-
 <p align="center">
-  <img width="600" src="https://i.imgur.com/evNeEue.png">
+  <img width="600" src="https://i.imgur.com/2omHG8y.png">
 </p>
 <br>
 
-<p align="center">  
-  <img width="600" src="https://i.imgur.com/2omHG8y.png">
-</p>
+Comes in different flavors:
+
+- The ```pmenu``` CLI, for your terminal and shell scripts. [[📂 GitHub]](https://github.com/Julynx/pmenu)
+- The ```pmenu_lib``` package, for your Python projects. [[📦 PyPi]](https://pypi.org/project/pmenu-lib/) [[📂 GitHub]](https://github.com/Julynx/pmenu_lib)
+
+You are now looking at the ```pmenu``` command for the terminal.
+
 <br>
 
 ## Installation
