@@ -9,10 +9,12 @@
 
 import sys
 import curses
+import tempfile
+from pathlib import Path
 from contextlib import suppress
 
 MAX_QUERY_LENGTH = 60
-TMP_FILE = "/tmp/pmenu"
+TMP_FILE = Path(tempfile.gettempdir()) / "pmenu"
 
 YELLOW = "\033[1;33m"
 CYAN = "\033[1;36m"
@@ -42,7 +44,7 @@ def main():
               f"  {CYAN}up     {RESET}Highlight previous option.\n"
               f"  {CYAN}down   {RESET}Highlight next option.\n"
               f"  {CYAN}enter  {RESET}Select highlighted option, "
-              f"will be written to {YELLOW}\"/tmp/pmenu\"{RESET}.\n"
+              f"will be written to {YELLOW}\"{TMP_FILE}\"{RESET}.\n"
               f"  {CYAN}esc    {RESET}Quit menu and exit with code 1.\n")
 
         sys.exit(2)
@@ -53,8 +55,7 @@ def main():
 
     selected_option = pmenu(text)
     if selected_option is not None:
-        with open(TMP_FILE, "w", encoding="utf-8") as file:
-            file.write(selected_option)
+        TMP_FILE.write_text(selected_option, encoding="utf-8")
         sys.exit(0)
     sys.exit(1)
 
@@ -90,7 +91,8 @@ def _display_menu(stdscr, lines):
     """
     curses.curs_set(1)
     curses.use_default_colors()
-    curses.set_escdelay(20)
+    if hasattr(curses, 'set_escdelay'):
+        curses.set_escdelay(20)
 
     current_row = 0
     query = ""

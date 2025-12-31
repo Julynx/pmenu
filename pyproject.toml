@@ -1,0 +1,15 @@
+[project]
+name = "pmenu"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "windows-curses>=2.3.0; platform_system=='Windows'",
+]
+
+[project.scripts]
+pmenu = "pmenu:main"
+
+[tool.uv]
+package = true
