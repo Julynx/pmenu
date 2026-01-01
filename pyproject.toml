@@ -34,11 +34,6 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Julynx/pmenu_lib"
-Repository = "https://github.com/Julynx/pmenu_lib"
-Issues = "https://github.com/Julynx/pmenu_lib/issues"
-
-[project.urls]
 Homepage = "https://github.com/Julynx/pmenu"
 Repository = "https://github.com/Julynx/pmenu"
 Issues = "https://github.com/Julynx/pmenu/issues"
