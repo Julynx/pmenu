@@ -1,12 +1,21 @@
 [project]
 name = "pmenu"
 version = "0.9.0"
-description = "Add your description here"
+description = "Sleek dmenu alternative written in Python and powered by curses"
 readme = "README.md"
 requires-python = ">=3.13"
+authors = [
+    { name = "Julynx" },
+]
+license = { text = "MIT" }
 dependencies = [
     "windows-curses>=2.3.0; platform_system=='Windows'",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Julynx/pmenu"
+Repository = "https://github.com/Julynx/pmenu"
+Issues = "https://github.com/Julynx/pmenu/issues"
 
 [project.scripts]
 pmenu = "pmenu:main"
