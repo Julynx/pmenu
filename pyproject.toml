@@ -13,3 +13,10 @@ pmenu = "pmenu:main"
 
 [tool.uv]
 package = true
+
+[dependency-groups]
+dev = [
+    "black>=25.12.0",
+    "pylint>=4.0.4",
+    "yina>=0.1.2",
+]

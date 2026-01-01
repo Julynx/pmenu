@@ -33,25 +33,27 @@ def main():
     elif len(sys.argv) > 2:
         text = sys.argv[1:]
     else:
-        print(f"\nUsage:\n"
-              f"  {CYAN}pmenu  "
-              f"{YELLOW}\"line1{CYAN}\\n"
-              f"{YELLOW}line2{CYAN}\\n"
-              f"{YELLOW}line3...\"{RESET}\n"
-              f"         {YELLOW}\"line1\" \"line2\" \"line3\" ...{RESET}")
+        print(
+            f"\nUsage:\n"
+            f"  {CYAN}pmenu  "
+            f'{YELLOW}"line1{CYAN}\\n'
+            f"{YELLOW}line2{CYAN}\\n"
+            f'{YELLOW}line3..."{RESET}\n'
+            f'         {YELLOW}"line1" "line2" "line3" ...{RESET}'
+        )
 
-        print("\nBindings:\n"
-              f"  {CYAN}up     {RESET}Highlight previous option.\n"
-              f"  {CYAN}down   {RESET}Highlight next option.\n"
-              f"  {CYAN}enter  {RESET}Select highlighted option, "
-              f"will be written to {YELLOW}\"{TMP_FILE}\"{RESET}.\n"
-              f"  {CYAN}esc    {RESET}Quit menu and exit with code 1.\n")
+        print(
+            "\nBindings:\n"
+            f"  {CYAN}up     {RESET}Highlight previous option.\n"
+            f"  {CYAN}down   {RESET}Highlight next option.\n"
+            f"  {CYAN}enter  {RESET}Select highlighted option, "
+            f'will be written to {YELLOW}"{TMP_FILE}"{RESET}.\n'
+            f"  {CYAN}esc    {RESET}Quit menu and exit with code 1.\n"
+        )
 
         sys.exit(2)
 
-    text = [line
-            for line in text
-            if line != ""]
+    text = [line for line in text if line != ""]
 
     selected_option = pmenu(text)
     if selected_option is not None:
@@ -91,7 +93,7 @@ def _display_menu(stdscr, lines):
     """
     curses.curs_set(1)
     curses.use_default_colors()
-    if hasattr(curses, 'set_escdelay'):
+    if hasattr(curses, "set_escdelay"):
         curses.set_escdelay(20)
 
     current_row = 0
@@ -100,14 +102,13 @@ def _display_menu(stdscr, lines):
     while True:
         stdscr.clear()
         filtered_lines = _filter_lines(lines, query)
-        start_row, max_display_rows = _populate_screen(screen=stdscr,
-                                                       lines=filtered_lines,
-                                                       row=current_row,
-                                                       query=query)
+        start_row, max_display_rows = _populate_screen(
+            screen=stdscr, lines=filtered_lines, row=current_row, query=query
+        )
         stdscr.refresh()
         key = stdscr.getch()
 
-        if key == ord('\n'):
+        if key == ord("\n"):
             with suppress(IndexError):
                 return filtered_lines[current_row]
 
@@ -148,9 +149,7 @@ def _filter_lines(lines, query):
     Returns:
         list: The filtered lines.
     """
-    return [line
-            for line in lines
-            if query.lower() in line.lower()]
+    return [line for line in lines if query.lower() in line.lower()]
 
 
 def _populate_screen(*, screen, lines, row, query):
@@ -172,12 +171,12 @@ def _populate_screen(*, screen, lines, row, query):
     start_row = max(0, row - max_display_rows + 1)
     end_row = min(start_row + max_display_rows, len(lines))
 
-    for i, line in enumerate(lines[start_row:end_row], start=start_row):
+    for line_number, line in enumerate(lines[start_row:end_row], start=start_row):
         with suppress(curses.error):
-            if i == row:
-                screen.addstr(i - start_row + 1, 0, line, curses.A_REVERSE)
+            if line_number == row:
+                screen.addstr(line_number - start_row + 1, 0, line, curses.A_REVERSE)
                 continue
-            screen.addstr(i - start_row + 1, 0, line)
+            screen.addstr(line_number - start_row + 1, 0, line)
 
     screen.addstr(0, 0, "[Search]: " + query, curses.A_BOLD)
 
