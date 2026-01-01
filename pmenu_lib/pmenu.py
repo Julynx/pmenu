@@ -1,65 +1,17 @@
-#!/usr/bin/env python3
-
 """
-@file     pmenu
+@file     pmenu.py
 @brief    Sleek dmenu alternative written in Python and powered by curses.
 @date     02/08/2023
 @author   Julio Cabria
 """
 
-import sys
 import curses
-import tempfile
-from pathlib import Path
 from contextlib import suppress
 
 MAX_QUERY_LENGTH = 60
-TMP_FILE = Path(tempfile.gettempdir()) / "pmenu"
-
-YELLOW = "\033[1;33m"
-CYAN = "\033[1;36m"
-RESET = "\033[0;0m"
 
 PRINTABLE_CHARS = range(32, 127)
 ESC = 27
-
-
-def main():
-    """
-    Main function.
-    """
-    if len(sys.argv) == 2:
-        text = sys.argv[1].split("\n")
-    elif len(sys.argv) > 2:
-        text = sys.argv[1:]
-    else:
-        print(
-            f"\nUsage:\n"
-            f"  {CYAN}pmenu  "
-            f'{YELLOW}"line1{CYAN}\\n'
-            f"{YELLOW}line2{CYAN}\\n"
-            f'{YELLOW}line3..."{RESET}\n'
-            f'         {YELLOW}"line1" "line2" "line3" ...{RESET}'
-        )
-
-        print(
-            "\nBindings:\n"
-            f"  {CYAN}up     {RESET}Highlight previous option.\n"
-            f"  {CYAN}down   {RESET}Highlight next option.\n"
-            f"  {CYAN}enter  {RESET}Select highlighted option, "
-            f'will be written to {YELLOW}"{TMP_FILE}"{RESET}.\n'
-            f"  {CYAN}esc    {RESET}Quit menu and exit with code 1.\n"
-        )
-
-        sys.exit(2)
-
-    text = [line for line in text if line != ""]
-
-    selected_option = pmenu(text)
-    if selected_option is not None:
-        TMP_FILE.write_text(selected_option, encoding="utf-8")
-        sys.exit(0)
-    sys.exit(1)
 
 
 def pmenu(lines):
@@ -181,7 +133,3 @@ def _populate_screen(*, screen, lines, row, query):
     screen.addstr(0, 0, "[Search]: " + query, curses.A_BOLD)
 
     return start_row, max_display_rows
-
-
-if __name__ == "__main__":
-    main()
