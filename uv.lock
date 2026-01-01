@@ -372,7 +372,7 @@ wheels = [
 
 [[package]]
 name = "pmenu-lib"
-version = "1.2.0"
+version = "1.2.2"
 source = { editable = "." }
 dependencies = [
     { name = "windows-curses", marker = "sys_platform == 'win32'" },

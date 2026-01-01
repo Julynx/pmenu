@@ -12,6 +12,13 @@ MAX_QUERY_LENGTH = 60
 
 PRINTABLE_CHARS = range(32, 127)
 ESC = 27
+DELETE_KEYS = [
+    curses.KEY_BACKSPACE,  # Standard backspace
+    127,  # ASCII DEL character
+    8,    # ASCII backspace character
+    263,  # Common backspace on some terminals
+    330,  # Delete key on Windows terminals (curses.KEY_DC value)
+]
 
 
 def pmenu(lines):
@@ -77,7 +84,7 @@ def _display_menu(stdscr, lines):
             if current_row == max_display_rows - 1:
                 start_row += 1
 
-        elif key == curses.KEY_BACKSPACE or key == curses.KEY_DC:
+        elif key in DELETE_KEYS:
             current_row = 0
             query = query[:-1]
 
