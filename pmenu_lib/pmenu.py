@@ -77,7 +77,7 @@ def _display_menu(stdscr, lines):
             if current_row == max_display_rows - 1:
                 start_row += 1
 
-        elif key == curses.KEY_BACKSPACE:
+        elif key == curses.KEY_BACKSPACE or key == curses.KEY_DC:
             current_row = 0
             query = query[:-1]
 
