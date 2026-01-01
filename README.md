@@ -17,8 +17,6 @@
 
 This package provides both a **command-line tool** and a **Python library** for creating interactive terminal menus.
 
-<br>
-
 ## Usage
 
 ### Library Usage
@@ -36,8 +34,6 @@ if selected_option:
 else:
     print("No option selected")
 ```
-
-<br>
 
 ### CLI Usage
 
@@ -61,8 +57,6 @@ The selected option will be written to `/tmp/pmenu` (or equivalent temp director
 - `1`: Menu closed without selection (ESC pressed)
 - `2`: Invalid usage (no arguments provided)
 
-<br>
-
 ## Menu Bindings
 
 - **Up arrow**: Highlight the previous menu entry
@@ -71,8 +65,6 @@ The selected option will be written to `/tmp/pmenu` (or equivalent temp director
 - **Backspace**: Delete search characters
 - **Enter**: Select the highlighted entry
 - **Esc**: Close the menu without selecting
-
-<br>
 
 ## pmenu_fm: A Practical Use Case (Linux)
 
