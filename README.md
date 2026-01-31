@@ -68,7 +68,7 @@ The selected option will be written to `/tmp/pmenu` (or equivalent temp director
 
 ## pmenu_fm: A Practical Use Case (Linux)
 
-The [`pmenu_fm`](https://raw.githubusercontent.com/Julynx/pmenu_lib/main/pmenu_fm) script included in this repository is an example of how `pmenu` can be integrated into a bash script to implement a simple file selector.
+The [`pmenu_fm`](https://raw.githubusercontent.com/Julynx/pmenu/main/pmenu_fm) script included in this repository is an example of how `pmenu` can be integrated into a bash script to implement a simple file selector.
 
 It uses [lsd](https://github.com/lsd-rs/lsd), a modern [ls](https://es.wikipedia.org/wiki/Ls) replacement, to get the list of files in the current directory and their associated icons. The list is then passed to `pmenu`, which displays a menu in the terminal window.
 
